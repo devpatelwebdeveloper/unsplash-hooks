@@ -1,0 +1,164 @@
+.masonry {
+  width: 100%;
+  height: auto;
+  padding: 0 1rem 1rem 1rem;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-auto-rows: 0;
+
+  .masonry-brick {
+    .image-card {
+      --card-options-height: 60px;
+
+      position: relative;
+      display: flex;
+      background: var(--white);
+      box-shadow: 0 6.7px 5.3px rgba(0, 0, 0, 0.016),
+        0 22.3px 17.9px rgba(0, 0, 0, 0.024), 0 100px 80px rgba(0, 0, 0, 0.04);
+      overflow: hidden;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.75) 0%,
+          transparent 100%
+        );
+        opacity: 0;
+        transition: opacity var(--transition-duration-300) ease;
+        transition-delay: var(--transition-delay);
+        z-index: 1;
+      }
+
+      &:hover {
+        &::after {
+          opacity: 1;
+        }
+        img.image {
+          --image-transform-offset: -30px;
+        }
+        .image-card--options {
+          --tranform-y: 0;
+        }
+      }
+
+      img.image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform var(--transition-duration-300) ease;
+        transform: translateY(var(--image-transform-offset, 0%));
+        transition-delay: var(--transition-delay);
+      }
+
+      &--clickable-area {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: calc(100% - var(--card-options-height));
+        z-index: 20;
+        cursor: pointer;
+      }
+
+      &--options {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: var(--card-options-height);
+        display: grid;
+        grid-template-columns: 1fr 0.35fr;
+        align-items: center;
+        background: var(--white);
+        transition: transform var(--transition-duration-300) ease;
+        transform: translateY(var(--tranform-y, 100%));
+        transition-delay: var(--transition-delay);
+        z-index: 5;
+        cursor: default;
+
+        .user-info {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          padding: 0 0.5em;
+          a {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            overflow: hidden;
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+          h3 {
+            margin-left: 6px;
+            font-size: 0.8em;
+            // white-space: nowrap;
+          }
+        }
+        .links {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          padding-right: 0.8em;
+          .link {
+            .icon {
+              --size: 20px;
+              width: var(--size);
+              height: var(--size);
+              margin-left: 12px;
+              svg {
+                fill: var(--fill, rgba(0, 0, 0, 0.6));
+                width: 100%;
+                height: 100%;
+                transition: fill var(--transition-duration-100) ease;
+              }
+            }
+            &:hover {
+              .icon {
+                &.instagram {
+                  --fill: #fb3958;
+                }
+                &.twitter {
+                  --fill: #00acee;
+                }
+                &.download {
+                  --fill: var(--black);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .image-card-fg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+        transform-origin: left center;
+        transform: scaleX(1);
+        transition: transform var(--transition-duration-300) ease;
+        pointer-events: none;
+
+        &.hide {
+          transform-origin: right center;
+          transform: scaleX(0);
+        }
+      }
+    }
+  }
+}
