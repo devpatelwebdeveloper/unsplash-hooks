@@ -1,5 +1,13 @@
 import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
+import {
+  Close,
+  ChevronUp,
+  Info,
+  EyeIcon,
+  Download,
+  LikeHeart,
+} from "../Icons/Iconpaths";
 import "./Modal.scss";
 
 const months = [
@@ -110,15 +118,7 @@ const Modal = ({ imageData, onModalActive }) => {
       >
         <img src={urls.full} alt={alt_description} ref={imageEl} />
         <button className="btn close" onClick={handleClose}>
-          <div className="icon">
-            <svg
-              viewBox="0 0 512 512"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="false"
-            >
-              <path d="M443.6,387.1L312.4,255.4l131.5-130c5.4-5.4,5.4-14.2,0-19.6l-37.4-37.6c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4  L256,197.8L124.9,68.3c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4L68,105.9c-5.4,5.4-5.4,14.2,0,19.6l131.5,130L68.4,387.1  c-2.6,2.6-4.1,6.1-4.1,9.8c0,3.7,1.4,7.2,4.1,9.8l37.4,37.6c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1L256,313.1l130.7,131.1  c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1l37.4-37.6c2.6-2.6,4.1-6.1,4.1-9.8C447.7,393.2,446.2,389.7,443.6,387.1z" />
-            </svg>
-          </div>
+          <div className="icon">{Close}</div>
         </button>
 
         <div className="options--container">
@@ -128,11 +128,7 @@ const Modal = ({ imageData, onModalActive }) => {
             </a>
             <div className="dropdown-btn--container">
               <button className="btn dropdown" onClick={handleDropdown}>
-                <div className="icon">
-                  <svg viewBox="0 0 32 32" aria-hidden="false">
-                    <path d="M9.9 11.5l6.1 6.1 6.1-6.1 1.9 1.9-8 8-8-8 1.9-1.9z"></path>
-                  </svg>
-                </div>
+                <div className="icon">{ChevronUp}</div>
               </button>
               <div
                 className={`dropdown-menu ${dropdownActive ? "" : "hide"}`}
@@ -169,15 +165,7 @@ const Modal = ({ imageData, onModalActive }) => {
 
           <div className="group g-2">
             <button className="btn info" onClick={() => setInfoActive(true)}>
-              <div className="icon">
-                <svg
-                  viewBox="0 0 512 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
-                >
-                  <path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"></path>
-                </svg>
-              </div>
+              <div className="icon">{Info}</div>
             </button>
           </div>
         </div>
@@ -195,15 +183,7 @@ const Modal = ({ imageData, onModalActive }) => {
             }}
           >
             <button className="btn close" onClick={() => setInfoActive(false)}>
-              <div className="icon">
-                <svg
-                  viewBox="0 0 512 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="false"
-                >
-                  <path d="M443.6,387.1L312.4,255.4l131.5-130c5.4-5.4,5.4-14.2,0-19.6l-37.4-37.6c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4  L256,197.8L124.9,68.3c-2.6-2.6-6.1-4-9.8-4c-3.7,0-7.2,1.5-9.8,4L68,105.9c-5.4,5.4-5.4,14.2,0,19.6l131.5,130L68.4,387.1  c-2.6,2.6-4.1,6.1-4.1,9.8c0,3.7,1.4,7.2,4.1,9.8l37.4,37.6c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1L256,313.1l130.7,131.1  c2.7,2.7,6.2,4.1,9.8,4.1c3.5,0,7.1-1.3,9.8-4.1l37.4-37.6c2.6-2.6,4.1-6.1,4.1-9.8C447.7,393.2,446.2,389.7,443.6,387.1z" />
-                </svg>
-              </div>
+              <div className="icon">{Close}</div>
             </button>
 
             <div className="row row--1">
@@ -216,17 +196,7 @@ const Modal = ({ imageData, onModalActive }) => {
             <div className="row row--2">
               <div className="image-info views--container">
                 <div className="info">
-                  <div className="icon">
-                    <svg
-                      version="1.1"
-                      viewBox="0 0 32 32"
-                      width="32"
-                      height="32"
-                      aria-hidden="false"
-                    >
-                      <path d="M31.8 15.1l-.2-.4c-3.5-6.9-9.7-11.5-15.6-11.5-6.3 0-12.3 4.5-15.7 11.7l-.2.4c-.2.5-.2 1.1 0 1.6l.2.4c3.6 7 9.7 11.5 15.6 11.5 6.3 0 12.3-4.5 15.6-11.6l.2-.4c.4-.5.4-1.2.1-1.7zm-2 1.2c-3 6.5-8.3 10.5-13.8 10.5-5.2 0-10.6-4.1-13.8-10.4l-.2-.4.1-.3c3.1-6.5 8.4-10.5 13.9-10.5 5.2 0 10.6 4.1 13.8 10.4l.2.4-.2.3zm-13.8-6.6c-3.5 0-6.3 2.8-6.3 6.3s2.8 6.3 6.3 6.3 6.3-2.8 6.3-6.3-2.8-6.3-6.3-6.3zm0 10.6c-2.4 0-4.3-1.9-4.3-4.3s1.9-4.3 4.3-4.3 4.3 1.9 4.3 4.3-1.9 4.3-4.3 4.3z"></path>
-                    </svg>
-                  </div>
+                  <div className="icon">{EyeIcon}</div>
                   <span className="info--title">Views</span>
                 </div>
                 <div className="info info--value">
@@ -239,17 +209,7 @@ const Modal = ({ imageData, onModalActive }) => {
               </div>
               <div className="image-info downloads--container">
                 <div className="info">
-                  <div className="icon">
-                    <svg
-                      version="1.1"
-                      viewBox="0 0 32 32"
-                      width="32"
-                      height="32"
-                      aria-hidden="false"
-                    >
-                      <path d="M27.5 18.08a1 1 0 0 0-1.42 0l-9.08 8.59v-23.67a1 1 0 0 0-2 0v23.67l-9.08-8.62a1 1 0 1 0-1.38 1.45l10.77 10.23a1.19 1.19 0 0 0 .15.09.54.54 0 0 0 .16.1.94.94 0 0 0 .76 0 .54.54 0 0 0 .16-.1l.15-.09 10.77-10.23a1 1 0 0 0 .04-1.42z"></path>
-                    </svg>
-                  </div>
+                  <div className="icon">{Download}</div>
                   <span className="info info--title">Downloads</span>
                 </div>
                 <div className="info info--value">
@@ -264,17 +224,7 @@ const Modal = ({ imageData, onModalActive }) => {
               </div>
               <div className="image-info likes--container">
                 <div className="info">
-                  <div className="icon">
-                    <svg
-                      version="1.1"
-                      viewBox="0 -4 32 40"
-                      width="32"
-                      height="32"
-                      aria-hidden="false"
-                    >
-                      <path d="M17.4 29c-.8.8-2 .8-2.8 0l-12.3-12.8c-3.1-3.1-3.1-8.2 0-11.4 3.1-3.1 8.2-3.1 11.3 0l2.4 2.8 2.3-2.8c3.1-3.1 8.2-3.1 11.3 0 3.1 3.1 3.1 8.2 0 11.4l-12.2 12.8z"></path>
-                    </svg>
-                  </div>
+                  <div className="icon">{LikeHeart}</div>
                   <span className="info info--title">Likes</span>
                 </div>
                 <div className="info info--value">
