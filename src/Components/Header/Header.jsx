@@ -31,7 +31,7 @@ const Header = ({
     <header>
       <button className="btn home" onClick={handleHomePage}>
         <div className="icon gallery">{Logo}</div>
-        <span className="title">Splash</span>
+        <span className="title">Image search</span>
       </button>
 
       <form onSubmit={handleSubmit}>
