@@ -13,7 +13,7 @@ phases:
       - npm install
   build:
     commands:
-      - echo Testing(Coming Soon)...
+      - echo TestingComing Soon...
 
       - echo Building...
       - npm build
@@ -21,4 +21,4 @@ artifacts:
   files:
     - "**/*"
   discard-paths: no
-  base-directory: dist
+  base-directory: public
